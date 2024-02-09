@@ -15,12 +15,16 @@
   </head>
   <body>
     <div class="container-stats">
-      <h1 class="mb-3">Log Analysis Result</h1>
-      <h2>Total Records: {{ total_records }}</h2>
-
-      <div class="card" style="width: 18rem">
+      <h1 class="mb-3" style="margin-top: 3rem">Analysis Result</h1>
+      <div class="card" style="width: 50rem; margin-top: 3rem">
         <div class="card-body">
-          <h3>Client IPs Rank</h3>
+          <h3 style="color: black">Total records: {{ total_records }}</h2>
+        </div>
+      </div>
+
+      <div class="card" style="width: 50rem; margin-top: 3rem">
+        <div class="card-body">
+          <h3 style="color: black">Client IPs Rank</h3>
           <table class="table table-hover">
             <thead>
               <tr>
@@ -42,9 +46,9 @@
         </div>
       </div>
 
-      <div class="card" style="width: 18rem">
+      <div class="card" style="width: 50rem; margin-top: 3rem">
         <div class="card-body">
-          <h3>Host Rank</h3>
+          <h3 style="color: black">Host Rank</h3>
           <table class="table">
             <thead>
               <tr>
@@ -74,7 +78,7 @@
             See Logs
           </button>
         </div>
-        <div>
+        <div class="margin-lft-12px">
           <button
             type="button"
             class="form-control btn btn-primary btn-primary-custom"

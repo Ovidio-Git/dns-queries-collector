@@ -89,6 +89,10 @@ h1 {
   margin-bottom: 1em;
 }
 
+.margin-lft-12px {
+  margin-left: 12px;
+}
+
 .rounded-full {
   border-radius: 9999px;
 }
