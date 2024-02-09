@@ -4,10 +4,7 @@ services:
   app:
     build: .
     container_name: lumu_app
-    command: flask run --host=0.0.0.0 --port=8043 
-    environment:
-      - FLASK_ENV=development
-
+    command: python3 app.py
     volumes:
       - .:/usr/src/app # this volume if for debug the app in real time
     ports:

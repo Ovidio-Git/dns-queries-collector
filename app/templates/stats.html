@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DNS LUMU :D</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container-stats">
+      <h1 class="mb-3">Log Analysis Result</h1>
+      <h2>Total Records: {{ total_records }}</h2>
+
+      <div class="card" style="width: 18rem">
+        <div class="card-body">
+          <h3>Client IPs Rank</h3>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">IP Address</th>
+                <th scope="col">Hits</th>
+                <th scope="col">Percentage</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for ip, data in client_ips_rank.items() %}
+              <tr>
+                <td>{{ ip }}</td>
+                <td>{{ data.hits }}</td>
+                <td>{{ data.percentage }}%</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card" style="width: 18rem">
+        <div class="card-body">
+          <h3>Host Rank</h3>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Host</th>
+                <th>Hits</th>
+                <th>Percentage</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for host, data in host_rank.items() %}
+              <tr>
+                <td>{{ host }}</td>
+                <td>{{ data.hits }}</td>
+                <td>{{ data.percentage }}%</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="form-group margin-top-10 btn-position">
+        <div>
+          <button
+            type="button"
+            class="form-control btn btn-primary btn-primary-custom"
+          >
+            See Logs
+          </button>
+        </div>
+        <div>
+          <button
+            type="button"
+            class="form-control btn btn-primary btn-primary-custom"
+            onclick="window.history.back();"
+          >
+            Back
+          </button>
+        </div>
+      </div>
+    </div>
+    <footer class="footer-position">
+      <div class="footer-title">Built by Ovidio Andrade :D</div>
+    </footer>
+  </body>
+</html>
