@@ -49,7 +49,7 @@
       <div class="card" style="width: 50rem; margin-top: 3rem">
         <div class="card-body">
           <h3 style="color: black">Host Rank</h3>
-          <table class="table">
+          <table class="table table-hover">
             <thead>
               <tr>
                 <th>Host</th>
@@ -72,6 +72,7 @@
       <div class="form-group margin-top-10 btn-position">
         <div>
           <button
+            id="seeLogsButton"  
             type="button"
             class="form-control btn btn-primary btn-primary-custom"
           >
@@ -92,5 +93,11 @@
     <footer class="footer-position">
       <div class="footer-title">Built by Ovidio Andrade :D</div>
     </footer>
+
   </body>
 </html>
+<script>
+    document.getElementById('seeLogsButton').addEventListener('click', function() {
+      window.location.href = '/logs';
+    });
+</script>

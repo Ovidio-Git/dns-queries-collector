@@ -1,7 +1,7 @@
-from flask import Flask, request, render_template, redirect, url_for
+from flask import Flask, request, render_template
 from os import getenv
 from requests import post 
-from utils.helper import send_to_lumu 
+from utils.helper import send_to_lumu, read_logs
 
 app = Flask(__name__)
 app.secret_key = getenv('FLASK_SECRET_LUMU')
@@ -39,7 +39,9 @@ def send_log():
  
 @app.route('/logs')
 def logs_app():
-    return 'logs'
+    inputs_logs = read_logs()
+    return render_template('logs.html', inputs_logs=inputs_logs)
+
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=8043)
