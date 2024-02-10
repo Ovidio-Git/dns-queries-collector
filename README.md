@@ -10,7 +10,7 @@ This Flask application processes DNS log files, sending the data to an external 
 Ensure Docker and Docker Compose are installed on your system. If not, please refer to the official documentation for [Docker](https://docs.docker.com/engine/install/) and [Docker Compose](https://docs.docker.com/compose/install/) installation instructions or [Docker Desktop](https://docs.docker.com/desktop/install/windows-install/)
 
 ## Project Structure
-
+```bash
 .
 ├── app
 │   ├── Dockerfile
@@ -32,6 +32,7 @@ Ensure Docker and Docker Compose are installed on your system. If not, please re
 │   └── utils
 │       └── helper.py
 └── README.md
+```
 
 
 ## Setup & Running
