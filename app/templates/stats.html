@@ -34,11 +34,11 @@
               </tr>
             </thead>
             <tbody>
-              {% for ip, data in client_ips_rank.items() %}
+              {% for ip, count, percentage in top_client_ips %}
               <tr>
                 <td>{{ ip }}</td>
-                <td>{{ data.hits }}</td>
-                <td>{{ data.percentage }}%</td>
+                <td>{{ count }}</td>
+                <td>{{ percentage }}</td>
               </tr>
               {% endfor %}
             </tbody>
@@ -58,11 +58,11 @@
               </tr>
             </thead>
             <tbody>
-              {% for host, data in host_rank.items() %}
+              {% for host, count, percentage in top_hosts %}
               <tr>
                 <td>{{ host }}</td>
-                <td>{{ data.hits }}</td>
-                <td>{{ data.percentage }}%</td>
+                <td>{{ count }}</td>
+                <td>{{ percentage }}</td>
               </tr>
               {% endfor %}
             </tbody>

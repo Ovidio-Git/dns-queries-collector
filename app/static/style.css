@@ -9,6 +9,7 @@
   }
 }
 
+/* image for the background */
 body {
   font-family: Arial, sans-serif;
   background-color: #343a40;
@@ -27,6 +28,12 @@ body::before {
   background: rgba(0, 0, 0, 0.85);
   z-index: 1;
 }
+
+.scrollable-table {
+  max-height: 550px;
+  overflow-y: scroll;
+}
+
 
 h1 {
   animation: slideUp 2s ease;
