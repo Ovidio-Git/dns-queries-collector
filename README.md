@@ -42,6 +42,7 @@ Ensure Docker and Docker Compose are installed on your system. If not, please re
 ```bash
 git clone [repository URL]
 cd [repository directory]
+cd app
 ```
 
 
