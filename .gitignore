@@ -1,2 +1,4 @@
 queries
 /app/__pycache__
+/app/utils/__pycache__
+/app/logs/__pycache__

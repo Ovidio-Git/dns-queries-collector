@@ -9,7 +9,7 @@ from collections import Counter
 collector_id = getenv('LUMU_COLLECTOR_ID')
 lumu_client_key = getenv('LUMU_CLIENT_KEY')
 # Define the URL target
-URL_TARGET = f"http://example.com/collectors/{collector_id}/dns/queries?key={lumu_client_key}"
+URL_TARGET = f"https://api.lumu.io/collectors/{collector_id}/dns/queries?key={lumu_client_key}"
 
 def read_logs() -> list[dict]:
     """Read the logs from the lumu.log file and return the data in a list of dictionaries
@@ -17,7 +17,8 @@ def read_logs() -> list[dict]:
             list[dict]: The logs data in a list of dictionaries"""
     inputs = []
     with open('./logs/lumu.log', 'r') as file:
-        for line in file:
+        
+        for line in file[::-1]:
             # Divide each line by the separator ' - ' and extract the relevant parts
             sections = line.strip().split(' - ')
             date = sections[0] 
@@ -48,7 +49,7 @@ def send_to_api(payload: dict) -> bool:
         return False
  
 
-def parse_log_file(chunk_raw,storage:list) -> tuple(list[dict], list[dict]):
+def parse_log_file(chunk_raw,storage:list) -> list[dict]:
     """ Process the log file with a hunk size of 500
         Args:
             chunk_raw (list): The chunk of raw data to process
@@ -82,7 +83,7 @@ def parse_log_file(chunk_raw,storage:list) -> tuple(list[dict], list[dict]):
         })
     return chunk_cooked, storage
 
-def get_stats(storage) -> tuple(int, list[tuple], list[tuple]):
+def get_stats(storage):
     """ Get the stats from the storage list
         Args:
             storage (list): The storage list with the host and client IP for the stats
@@ -105,7 +106,7 @@ def get_stats(storage) -> tuple(int, list[tuple], list[tuple]):
 
     return total_records, top_5_client_ips_percent,top_5_hosts_percent
             
-def send_to_lumu(file_stream) -> tuple(int, list[tuple], list[tuple]):
+def send_to_lumu(file_stream):
     """ Process the log file with a chunk size of 500 and send it to the Lumu API
     
         Args:
@@ -124,9 +125,8 @@ def send_to_lumu(file_stream) -> tuple(int, list[tuple], list[tuple]):
     for i in range(0, total_lines, chunk_size):
         # Get the chunk of lines to process 
         chunk = lines[i:i+chunk_size]
-        print("Chunk:", len(chunk))
         chunk_payload, storage = parse_log_file(chunk, storage)
-        print("Chunk payload:", chunk_payload)
         send_to_api(chunk_payload)
     total_records, client_ips_rank, host_rank = get_stats(storage)
+    logger.info(f"Processed is gone successfully. Total records: {total_records}. Top 5 client IPs: {client_ips_rank}. Top 5 hosts: {host_rank}")
     return total_records, client_ips_rank, host_rank
