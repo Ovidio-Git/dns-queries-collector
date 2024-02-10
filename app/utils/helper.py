@@ -18,7 +18,7 @@ def read_logs() -> list[dict]:
     inputs = []
     with open('./logs/lumu.log', 'r') as file:
         
-        for line in file[::-1]:
+        for line in file:
             # Divide each line by the separator ' - ' and extract the relevant parts
             sections = line.strip().split(' - ')
             date = sections[0] 
